@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat May  9 10:38:38 2020
+Created on Sun May 10 09:38:04 2020
 
 @author: jethi
 """
@@ -12,16 +12,18 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from os import path
 
-times_data= pd.read_csv('timesData.csv')
-X2011=times_data.country[times_data.year==2011]
-plt.subplots(figsize=(8,8))
-wordcloud= WordCloud(
-    background_color='black',
-    width=1200,
-    height=800
-     ).generate(" ".join(X2011))
+""" data Set """
 
+data= pd.read_csv("HRDataset_v13.csv")
+
+RC= data.RecruitmentSource[data.Sex =='F']
+
+wordcloud= WordCloud(
+    
+    background_color="white",
+    width=1200,
+    height= 800
+    ).generate(" ".join(RC))
 plt.imshow(wordcloud)
 plt.axis('off')
-plt.savefig('graph.png')
 plt.show()
